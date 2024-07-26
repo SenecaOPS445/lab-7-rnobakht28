@@ -12,7 +12,23 @@ class Time:
         self.hour = hour
         self.minute = minute
         self.second = second
+
+    def __str__(self):
+        '''return a string representation for the object self'''
+        return  f'{self.hour:02d}:{self.minute:02d}:{self.second:02d}'
     
+    def __repr__(self):
+        '''return a string representation for the object self'''
+        '''just instead of ':', you are required use the '.'  in the formatting string.'''
+        return  f'{self.hour:02d}.{self.minute:02d}.{self.second:02d}'
+    
+    def __add__(self, t2):
+        """return the result by using sum_times() method"""
+        timetosect1 = self.time_to_sec()
+        timetosect2 = t2.time_to_sec()
+        add = sec_to_time(timetosect1 + timetosect2)
+        return add
+
     def format_time(self):
         """Return time object (t) as a formatted string"""
         return f'{self.hour:02d}:{self.minute:02d}:{self.second:02d}'
